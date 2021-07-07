@@ -99,7 +99,7 @@ class Fractions {
             add(expression: expression)
             break
         case "-":
-            substract(expression: expression)
+            subtract(expression: expression)
             break
         case "/":
             divide(expression: expression)
@@ -232,7 +232,7 @@ class Fractions {
         }
     }
     
-    func substract(expression: Expression) {
+    func subtract(expression: Expression) {
         let operand1 = getWholeNumberAndFraction(operand: expression.operand1)
         let operand2 = getWholeNumberAndFraction(operand: expression.operand2)
         
