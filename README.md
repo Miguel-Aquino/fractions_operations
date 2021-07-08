@@ -16,5 +16,8 @@ After you run the project, it's possible that you will not see the command line 
 
 
 ## Running the unit tests
+
+Important: make sure to leave the `=` sign when running the unit tests so the expected result can match the result from the operation. 
+
 ![image](https://user-images.githubusercontent.com/35620066/124865347-19683600-df80-11eb-8908-bce1b754d3c4.png)
 
