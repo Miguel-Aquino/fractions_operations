@@ -14,3 +14,7 @@ After you run the project, it's possible that you will not see the command line 
 
 ![image](https://user-images.githubusercontent.com/35620066/124700136-cf188380-deb1-11eb-92eb-d972d7e12046.png)
 
+
+## Running the unit tests
+![image](https://user-images.githubusercontent.com/35620066/124865347-19683600-df80-11eb-8908-bce1b754d3c4.png)
+
