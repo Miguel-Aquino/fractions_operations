@@ -37,6 +37,8 @@ struct Operand {
 
 class Fractions {
     
+    static let shared = Fractions()
+    
     let consoleIO = ConsoleIO()
     
     func getOption(_ option: String) -> (option:OptionType, value: String) {
@@ -57,7 +59,8 @@ class Fractions {
             case .fractions:
                 consoleIO.writeMessage("Type the operation to resolve (e.g. 1/2 * 3_3/4, 2_3/8 + 9/8):")
                 let operation = consoleIO.getKeyboardInput()
-                resolve(operation: operation)
+                
+                consoleIO.writeMessage(resolve(operation: operation))
             case .help:
                 consoleIO.writeMessage("HELP: Legal operators shall be *, /, +, - (multiply, divide, add, subtract)\n" +
                       "Operands and operators shall be separated by one or more spaces\n" +
@@ -71,11 +74,11 @@ class Fractions {
         }
     }
     
-    func resolve(operation: String) {
-        splitOperation(operation: operation)
+    func resolve(operation: String) -> String {
+        return splitOperation(operation: operation)
     }
     
-    func splitOperation(operation: String){
+    func splitOperation(operation: String) -> String {
         
         let operationWithNoExtraSpaces = operation.removeExtraSpaces
         
@@ -86,30 +89,25 @@ class Fractions {
                                          legalOperator: fullOperation [1],
                                          operand2: fullOperation [2])
             
-            handleOperator(expression: expression)
+            return handleOperator(expression: expression)
         
         } else {
-            consoleIO.writeMessage("Failed to get operands and operators", to: .error)
+            return "Failed to get operands and operators"
         }
     }
     
-    func handleOperator(expression: Expression) {
+    func handleOperator(expression: Expression) -> String{
         switch expression.legalOperator {
         case "+":
-            add(expression: expression)
-            break
+            return add(expression: expression)
         case "-":
-            subtract(expression: expression)
-            break
+            return subtract(expression: expression)
         case "/":
-            divide(expression: expression)
-            break
+            return divide(expression: expression)
         case "*":
-            multiply(expression: expression)
-            break
+             return multiply(expression: expression)
         default:
-            consoleIO.writeMessage("Illegal operator \(expression.legalOperator)", to: .error)
-            break
+            return "Illegal operator \(expression.legalOperator)"
         }
     }
     
@@ -199,7 +197,7 @@ class Fractions {
     }
     
     
-    func add(expression: Expression) {
+    func add(expression: Expression) -> String {
         let operand1 = getWholeNumberAndFraction(operand: expression.operand1)
         let operand2 = getWholeNumberAndFraction(operand: expression.operand2)
         
@@ -208,8 +206,7 @@ class Fractions {
         let result = getCommonDenominator(denominator1: operand1.denominator, denominator2: operand2.denominator)
         
         if result.0 == 0 {
-            consoleIO.writeMessage("Cannot have denominators equal to 0", to: .error)
-            return
+            return "Cannot have denominators equal to 0"
         }
         
         let commonDenominator = result.0
@@ -224,15 +221,12 @@ class Fractions {
         wholeNumbers = wholeNumbers + fractionResult.0
         finalNumerator = fractionResult.1
         
-        if finalNumerator != 0 {
-            consoleIO.writeMessage("= \(wholeNumbers)_\(finalNumerator)/\(commonDenominator)")
-        }
-        else {
-            consoleIO.writeMessage("= \(wholeNumbers)")
-        }
+        return checkSimplification(wholeNumber: wholeNumbers,
+                                   finalNumerator: finalNumerator,
+                                   finalDenominator: commonDenominator)
     }
     
-    func subtract(expression: Expression) {
+    func subtract(expression: Expression) -> String {
         let operand1 = getWholeNumberAndFraction(operand: expression.operand1)
         let operand2 = getWholeNumberAndFraction(operand: expression.operand2)
         
@@ -241,8 +235,7 @@ class Fractions {
         let result = getCommonDenominator(denominator1: operand1.denominator, denominator2: operand2.denominator)
         
         if result.0 == 0 {
-            consoleIO.writeMessage("Cannot have denominators equal to 0", to: .error)
-            return
+            return "Cannot have denominators equal to 0"
         }
         
         let commonDenominator = result.0
@@ -257,21 +250,18 @@ class Fractions {
         
         finalNumerator = fractionResult.1
         
-        if finalNumerator != 0 {
-            consoleIO.writeMessage("= \(wholeNumbers)_\(finalNumerator)/\(commonDenominator)")
-        }
-        else {
-            consoleIO.writeMessage("= \(wholeNumbers)")
-        }
+        return checkSimplification(wholeNumber: wholeNumbers,
+                                   finalNumerator: finalNumerator,
+                                   finalDenominator: commonDenominator)
     }
     
-    func multiply(expression: Expression) {
+    func multiply(expression: Expression) -> String {
         let operand1 = getWholeNumberAndFraction(operand: expression.operand1)
         let operand2 = getWholeNumberAndFraction(operand: expression.operand2)
         
         if (operand1.denominator == 0 || operand2.denominator == 0) {
             consoleIO.writeMessage("Cannot have denominators equal to 0", to: .error)
-            return
+            return "Cannot have denominators equal to 0"
         }
         
         var firstNumerator = Int()
@@ -301,21 +291,17 @@ class Fractions {
         
         finalNumerator = fractionResult.1
         
-        if finalNumerator != 0 {
-            consoleIO.writeMessage("= \(wholeNumber)_\(finalNumerator)/\(finalDenominator)")
-        }
-        else {
-            consoleIO.writeMessage("= \(wholeNumber)")
-        }
+        return checkSimplification(wholeNumber: wholeNumber,
+                                   finalNumerator: finalNumerator,
+                                   finalDenominator: finalDenominator)
     }
     
-    func divide (expression: Expression) {
+    func divide (expression: Expression) -> String {
         let operand1 = getWholeNumberAndFraction(operand: expression.operand1)
         let operand2 = getWholeNumberAndFraction(operand: expression.operand2)
         
         if (operand1.denominator == 0 || operand2.denominator == 0) {
-            consoleIO.writeMessage("Cannot have denominators equal to 0", to: .error)
-            return
+            return "Cannot have denominators equal to 0"
         }
         
         var firstNumerator = Int()
@@ -345,11 +331,20 @@ class Fractions {
         
         finalNumerator = fractionResult.1
         
-        if finalNumerator != 0 {
-            consoleIO.writeMessage("= \(wholeNumber)_\(finalNumerator)/\(finalDenominator)")
+        return checkSimplification(wholeNumber: wholeNumber,
+                                   finalNumerator: finalNumerator,
+                                   finalDenominator: finalDenominator)
+    }
+    
+    func checkSimplification(wholeNumber: Int, finalNumerator: Int, finalDenominator: Int ) -> String {
+        if finalNumerator != 0 && wholeNumber != 0 {
+            return "= \(wholeNumber)_\(finalNumerator)/\(finalDenominator)"
+        }
+        else if wholeNumber == 0 {
+            return "= \(finalNumerator)/\(finalDenominator)"
         }
         else {
-            consoleIO.writeMessage("= \(wholeNumber)")
+            return "= \(wholeNumber)"
         }
     }
 }

@@ -10,6 +10,10 @@
 		EF5333E12694C9990002D7E1 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5333E02694C9990002D7E1 /* main.swift */; };
 		EF5333E82694CBBD0002D7E1 /* ConsoleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5333E72694CBBD0002D7E1 /* ConsoleIO.swift */; };
 		EF5333EC2694D1990002D7E1 /* Fractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5333EB2694D1990002D7E1 /* Fractions.swift */; };
+		EF984CAA2696AD7A007ED84C /* FractionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF984CA92696AD7A007ED84C /* FractionsTests.swift */; };
+		EF984CB02696B34C007ED84C /* Fractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5333EB2694D1990002D7E1 /* Fractions.swift */; };
+		EF984CB12696B38C007ED84C /* ConsoleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5333E72694CBBD0002D7E1 /* ConsoleIO.swift */; };
+		EF984CB22696B38E007ED84C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5333E02694C9990002D7E1 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,10 +33,20 @@
 		EF5333E02694C9990002D7E1 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		EF5333E72694CBBD0002D7E1 /* ConsoleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleIO.swift; sourceTree = "<group>"; };
 		EF5333EB2694D1990002D7E1 /* Fractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fractions.swift; sourceTree = "<group>"; };
+		EF984CA72696AD7A007ED84C /* FractionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FractionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF984CA92696AD7A007ED84C /* FractionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FractionsTests.swift; sourceTree = "<group>"; };
+		EF984CAB2696AD7A007ED84C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		EF5333DA2694C9990002D7E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF984CA42696AD7A007ED84C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				EF5333DF2694C9990002D7E1 /* OneLogin */,
+				EF984CA82696AD7A007ED84C /* FractionsTests */,
 				EF5333DE2694C9990002D7E1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				EF5333DD2694C9990002D7E1 /* OneLogin */,
+				EF984CA72696AD7A007ED84C /* FractionsTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -66,6 +82,15 @@
 				EF5333EB2694D1990002D7E1 /* Fractions.swift */,
 			);
 			path = OneLogin;
+			sourceTree = "<group>";
+		};
+		EF984CA82696AD7A007ED84C /* FractionsTests */ = {
+			isa = PBXGroup;
+			children = (
+				EF984CA92696AD7A007ED84C /* FractionsTests.swift */,
+				EF984CAB2696AD7A007ED84C /* Info.plist */,
+			);
+			path = FractionsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -88,6 +113,23 @@
 			productReference = EF5333DD2694C9990002D7E1 /* OneLogin */;
 			productType = "com.apple.product-type.tool";
 		};
+		EF984CA62696AD7A007ED84C /* FractionsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF984CAC2696AD7A007ED84C /* Build configuration list for PBXNativeTarget "FractionsTests" */;
+			buildPhases = (
+				EF984CA32696AD7A007ED84C /* Sources */,
+				EF984CA42696AD7A007ED84C /* Frameworks */,
+				EF984CA52696AD7A007ED84C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FractionsTests;
+			productName = FractionsTests;
+			productReference = EF984CA72696AD7A007ED84C /* FractionsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -98,6 +140,9 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					EF5333DC2694C9990002D7E1 = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					EF984CA62696AD7A007ED84C = {
 						CreatedOnToolsVersion = 12.5;
 					};
 				};
@@ -116,9 +161,20 @@
 			projectRoot = "";
 			targets = (
 				EF5333DC2694C9990002D7E1 /* OneLogin */,
+				EF984CA62696AD7A007ED84C /* FractionsTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF984CA52696AD7A007ED84C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EF5333D92694C9990002D7E1 /* Sources */ = {
@@ -128,6 +184,17 @@
 				EF5333E12694C9990002D7E1 /* main.swift in Sources */,
 				EF5333E82694CBBD0002D7E1 /* ConsoleIO.swift in Sources */,
 				EF5333EC2694D1990002D7E1 /* Fractions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF984CA32696AD7A007ED84C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF984CB12696B38C007ED84C /* ConsoleIO.swift in Sources */,
+				EF984CAA2696AD7A007ED84C /* FractionsTests.swift in Sources */,
+				EF984CB22696B38E007ED84C /* main.swift in Sources */,
+				EF984CB02696B34C007ED84C /* Fractions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +322,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZD35H7K52T;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_TESTABILITY = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -266,6 +334,43 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZD35H7K52T;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_TESTABILITY = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EF984CAD2696AD7A007ED84C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZD35H7K52T;
+				INFOPLIST_FILE = FractionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Platzi.FractionsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EF984CAE2696AD7A007ED84C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = ZD35H7K52T;
+				INFOPLIST_FILE = FractionsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Platzi.FractionsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -288,6 +393,15 @@
 			buildConfigurations = (
 				EF5333E52694C9990002D7E1 /* Debug */,
 				EF5333E62694C9990002D7E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF984CAC2696AD7A007ED84C /* Build configuration list for PBXNativeTarget "FractionsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF984CAD2696AD7A007ED84C /* Debug */,
+				EF984CAE2696AD7A007ED84C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
